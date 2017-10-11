@@ -53,12 +53,29 @@ if ('serviceWorker' in navigator) {
 
       <p>Lets see if change occured on the page or not.</p>
 
-      <h3>How to get involved</h3>
+      <h3>How did i get through it</h3>
 
       <ol>
-        <li>Read though our <a href="https://github.com/webcommunityukie/Code-of-Conduct"><i class="fa fa-bolt"></i> Code of Conduct</a>.</li>
-        <li>Visit our <a href="https://webcommunityukie.slack.com"><i class="fa fa-slack"></i> Slack</a>, if you can track down someone already involved ask them to invite you and if you can't you are still welcome to join, details of how to can be found <a href="https://docs.google.com/document/d/1-9mtynxQfA445qTM_VRSfMJbkMKsoBKLiIFpTCPK_F4/edit?usp=sharing">here.</a></li>
-        <li>Check out all the <a href="https://drive.google.com/drive/u/1/folders/0B1OSazPpPBanODA3RGIxc0xiQ0k"><i class="fa fa-file-o"></i> Information and Resources</a> our community has compiled on running events.</li>
+        <li>create/download a web-template <a href="https://bootstraptaste.com/"><i class="fa fa-bolt"></i> Code of Conduct</a>.</li>
+        <li>you can use open-source service worker like sw-toolbox.js provided by google  <a href="https://www.google.co.in/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjzjPyUiejWAhVDto8KHW7qAjQQFggnMAA&url=https%3A%2F%2Fgithub.com%2FGoogleChromeLabs%2Fsw-toolbox&usg=AOvVaw0R9z9PUIZiLoMH_u_i1p0q"><i class="fa fa-slack"></i> Slack</a>, clone this js file to your project</li>
+        <li>Now create your js file to connect to that sw-toolbox and paste following:<br/>
+	      'use strict';
+
+importScripts('sw-toolbox.js');
+
+toolbox.precache(["index.html","style/style.css"]);
+
+toolbox.router.get('/images/*', toolbox.cacheFirst);
+
+toolbox.router.get('/*', toolbox.networkFirst, {
+  networkTimeoutSeconds: 5
+});
+<br/>
+	      </li>
+	      <li>
+	      NOw create manifest file for your website with some default icon <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest">
+	      </li>
+	      <li>Now host your app and check the Performance Using <b>Google lightHouse tool extension</b> </li>	      
       </ol>
       
       <footer>
